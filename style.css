@@ -1,0 +1,415 @@
+/* ==========================================================================
+   1. ATURAN DASAR GLOBAL
+   ========================================================================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; 
+    background-color: #f5f5f5; 
+    scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   2. BAR NAVIGASI (NAVBAR)
+   ========================================================================== */
+.navbar-toko {
+    background-color: #1a1a1a;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-toko {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.menu-toko {
+    display: flex;
+    align-items: center;
+}
+
+.link-toko {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+
+.link-toko:hover {
+    color: white; 
+}
+
+/* ==========================================================================
+   3. MENU DROPDOWN
+   ========================================================================== */
+.dropdown-produk {
+    position: relative;
+    display: inline-block;
+}
+
+.konten-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 10;
+    top: 100%;
+    left: 20px;
+    border-radius: 4px;
+    padding: 10px 0;
+}
+
+/* ==========================================================================
+   4. MENGATUR TAMPILAN TAUTAN DI MENU DROPDOWN
+   ========================================================================== */
+.konten-dropdown a {
+    color: #e0e0e0;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.konten-dropdown a:hover {
+    background-color: #333333;
+    color: white;
+}
+
+.dropdown-produk:hover .konten-dropdown {
+    display: block;
+}
+
+.dropdown-produk:focus .konten-dropdown {
+    display: block; 
+}
+
+.dropdown-produk:focus .konten-dropdown.mega-box {
+    display: grid; 
+    grid-template-columns: 1fr 1fr;
+    min-width: 280px;
+    padding: 15px;
+    gap: 12px 20px;
+}
+
+.dropdown-produk:focus {
+    outline: none;
+}
+
+/* ==========================================================================
+   5. BANNER UTAMA (HERO SECTION)
+   ========================================================================== */
+.jendela-hero {
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    position: relative;
+}
+
+.rel-slider {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    animation: geserBanner 15s infinite;
+}
+
+.gerbong-slide {
+    width: 100vw;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.slide-1 {
+    background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200');
+}
+.slide-2 {
+    background-image: url('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=1200');
+}
+.slide-3 {
+    background-image: url('https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=1200');
+}
+
+.overlay-hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.judul-hero {
+    color: white;       
+    font-size: 32px;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.subjudul-hero {
+    color: #e0e0e0;     
+    font-size: 16px;
+    margin-bottom: 25px;
+    max-width: 650px;   
+    line-height: 1.5;
+}
+
+.btn-belanja {
+    background-color: white;
+    color: #1a1a1a;     
+    border: none;
+    padding: 12px 28px;
+    border-radius: 25px; 
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-belanja:hover {
+    background-color: #e0e0e0; 
+    transform: scale(1.05);    
+}
+
+@keyframes geserBanner {
+    0%, 28% { transform: translateX(0); }
+    33%, 61% { transform: translateX(-100vw); }
+    66%, 94% { transform: translateX(-200vw); }
+    100% { transform: translateX(0); }
+}
+
+/* ==========================================================================
+   6. AREA KONTEN & GALERI PRODUK (DIPERBAIKI UNTUK 6 PRODUK)
+   ========================================================================== */
+.konten-toko {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.judul-seksi {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+    font-size: 24px;
+}
+
+/* Menggunakan sistem Grid 3 kolom agar produk terbagi simetris (3 atas, 3 bawah) */
+.grid-produk {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.kartu-sepatu {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Menjaga agar tombol beli selalu sejajar paling bawah */
+}
+
+.kartu-sepatu:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   TAMPILAN LABEL SEPATU BARU DAN BEKAS
+   ========================================================================== */
+.wadah-foto {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.label-produk {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.label-baru {
+    background-color: #e63946;
+}
+
+.label-second {
+    background-color: #f4a261;
+}
+
+.foto-sepatu {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.nama-sepatu {
+    font-size: 18px;
+    color: #1a1a1a;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
+.harga-sepatu {
+    font-size: 16px;
+    color: #e63946; 
+    font-weight: bold;
+    margin-bottom: 20px; 
+}
+
+.btn-beli {
+    width: 100%;
+    background-color: #1a1a1a;
+    color: white; 
+    padding: 12px 22px;
+    border: none; 
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-beli:hover {
+    background-color: #333333; 
+}
+
+/* ==========================================================================
+   7. BAGIAN DESKRIPSI TOKO ATAU TENTANG
+   ========================================================================== */
+.tentang-toko p {
+    color: #666666;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.tentang-toko, .kontak-toko {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   8. BAGIAN KONTAK 
+   ========================================================================== */
+.daftar-kontak {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.daftar-kontak li {
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #333333;
+}
+
+.kontak-toko .daftar-kontak {
+    margin-top: 25px;
+}
+
+.btn-wa {
+    display: inline-block;
+    background-color: #25d366;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.btn-wa:hover {
+    background-color: #128C7E;
+}
+
+/* ==========================================================================
+   9. BAGIAN FOOTER
+   ========================================================================== */
+.footer-toko {
+    background-color: #1a1a1a;
+    text-align: center;
+    padding: 8px;
+    margin-top: 50px;
+}
+
+.teks-footer {
+    color: #666666;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   10. BAGIAN RESPONSIF LAYAR HANDPHONE
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .menu-toko {
+        display: flex;
+        gap: 15px;
+    }
+
+    .logo-toko {
+        font-size: 20px;
+    }
+
+    .jendela-hero {
+        height: 350px;
+    }
+
+    .judul-hero {
+        font-size: 24px;
+    }
+
+    .subjudul-hero {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    /* Mengubah susunan kolom di HP menjadi 1 baris vertikal memanjang ke bawah */
+    .grid-produk {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 10px;
+    }
+
+    .kartu-sepatu {
+        width: 100%;
+    }
+
+    .foto-sepatu {
+        height: 250px; /* Ditinggikan sedikit di HP agar foto produk terlihat jelas */
+    }
+
+    .dropdown-produk:focus .konten-dropdown.mega-box {
+        position: static;
+        width: 100%;
+        min-width: 100%;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
+}
